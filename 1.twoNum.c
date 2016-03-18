@@ -1,19 +1,3 @@
-/***************************************************************************
- * 
- * Copyright (c) 2016 Baidu.com, Inc. All Rights Reserved
- * 
- **************************************************************************/
- 
- 
- 
-/**
- * @file twoNum.c
- * @author rentiansheng_iwm(com@baidu.com)
- * @date 2016/03/14 16:58:36
- * @brief 
- *  
- **/
-
 
 
 #include <stdio.h>
