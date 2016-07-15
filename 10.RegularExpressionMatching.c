@@ -6,23 +6,30 @@
 
 #define bool int
 
-char * getNeedChar(char *p , int slen) {
-    char * ret = (char *) malloc((slen + 1) * sizeof(char) );
-    int index = 0;
-    char  *retP = ret;
-
-    while(index < slen) {
-        if(p[index] != '*' && p[index + 1] != '*') {
-            *retP = p[index];
-            retP ++;
-        }
-
-        index ++;
+bool isMatch(char* s, char* p) {
+    if(*p == 0) {
+        return *s? 0: 1;
     }
-    retP = 0;
-    return ret;
-}
 
+
+
+    if( *(p+1) != '*') {
+        if( (*s == *p) || (*p == '.' && *s != 0)  ) {
+            return isMatch(s+1, p+1);
+        } else {
+            return 0;
+        }
+    }
+
+    while( (*p == *s) || (*p == '.' && *s != 0 )) {
+        if(isMatch( s, p+2)) { return 1;}
+        s++;
+    }
+
+
+
+    return isMatch(s, p+2);
+}
 
 
 int main(int *argc, char *argv[])
