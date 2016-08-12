@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//write code, no test and verify correct
 
 struct Node {
     int v;
@@ -46,8 +47,6 @@ int * twoSum(struct node * dataNode, int numsSize, int target, int  pk) {
 
     return ret;
 }
-
-
 
 
 int** threeSum(int* nums, int numsSize, int* returnSize) {
