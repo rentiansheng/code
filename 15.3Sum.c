@@ -1,7 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//write code, no test and verify correct
+
+//new 解法
+
+
+int cmpInt(const void *a, const void * b) {
+    return *(int*)a - *(int *)b;
+}
+
+int ** threeSum(int * nums, int numsSize, int * returnSize) {
+
+    int i, *end, *start;
+    int tmp ;
+    int ** ret =  (int **)malloc(sizeof(int)*numsSize*3);
+    int ** row = ret;
+    int *intPtr;
+
+    *returnSize = 0;
+
+    qsort(nums, numsSize, sizeof(int), cmpInt);
+
+    for(i=0; i < numsSize; i++) {
+
+        if(i>0 && nums[i-1] == nums[i]) {
+            continue;
+        }
+
+        start = nums + i + 1;
+        end = nums + numsSize - 1;
+
+        while(start < end) {
+            tmp = *start + *end + nums[i];
+            if(tmp > 0) {
+                end --;
+            } else if(tmp < 0) {
+                start ++;
+            }else {
+                *returnSize += 1;
+                intPtr = (int *)malloc(3*sizeof(int));
+                intPtr[0] = nums[i];
+                intPtr[1] = *start;
+                intPtr[2] = *end;
+
+                *row = intPtr;
+                row ++;
+                start++;
+                end--;
+                while(start < end && *(start-1) == *start) { start++;}
+                while(start < end && *(end+1) == *start) {end--;}
+
+            }
+        }
+
+
+    }
+
+    return ret;
+}
+
+
+
+
+
+//old 解法
 
 struct Node {
     int v;
@@ -14,6 +76,7 @@ int cmp(const void *a, const void *b)
 {
     return ((struct Node *)a)->v - ((struct Node *)b)->v;
 }
+
 
 
 int * twoSum(struct Node * dataNode, int numsSize, int * retSize, int target, int  pk) {
@@ -60,7 +123,7 @@ int * twoSum(struct Node * dataNode, int numsSize, int * retSize, int target, in
 }
 
 
-int** threeSum(int* nums, int numsSize, int* returnSize) {
+int** threeSumOld(int* nums, int numsSize, int* returnSize) {
 
 
     struct Node * dataNode = (struct Node * )malloc(numsSize * sizeof(struct Node));
@@ -136,12 +199,16 @@ int** threeSum(int* nums, int numsSize, int* returnSize) {
 
 }
 
+
+
+
+
 int main(int argc, char *argv[]) {
 
-    //int a[] = {-1, 0, 1, 2, -1, -4};
+    int a[] = {-1, 0, 1, 2, -1, -4};
     //int a[] = {-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6};
     //int len = 15;
-    int a[] = {-1,-2,-3,4,1,3,0,3,-2,1,-2,2,-1,1,-5,4,-3};
+    //int a[] = {-1,-2,-3,4,1,3,0,3,-2,1,-2,2,-1,1,-5,4,-3};
     int len = sizeof(a)/sizeof(int);
 
     int i = 0;
