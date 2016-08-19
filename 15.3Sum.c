@@ -13,7 +13,7 @@ int ** threeSum(int * nums, int numsSize, int * returnSize) {
 
     int i, *end, *start;
     int tmp ;
-    int ** ret =  (int **)malloc(sizeof(int)*numsSize*3);
+    int ** ret =  (int **)malloc(sizeof(int**)*numsSize);
     int ** row = ret;
     int *intPtr;
 
