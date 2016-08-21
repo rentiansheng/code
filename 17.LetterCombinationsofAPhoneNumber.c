@@ -35,7 +35,7 @@ char** letterCombinations(char* digits, int* returnSize) {
     }
     *returnSize = 0;
 
-    ret = (char **)malloc(sizeof(char**)*mallocLen);
+    ret = (char **)malloc(sizeof(char*)*mallocLen);
     row = ret;
 
 

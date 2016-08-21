@@ -13,7 +13,7 @@ int ** threeSum(int * nums, int numsSize, int * returnSize) {
 
     int i, *end, *start;
     int tmp ;
-    int ** ret =  (int **)malloc(sizeof(int**)*numsSize);
+    int ** ret =  (int **)malloc(sizeof(int*)*numsSize);
     int ** row = ret;
     int *intPtr;
 
@@ -129,7 +129,7 @@ int** threeSumOld(int* nums, int numsSize, int* returnSize) {
     struct Node * dataNode = (struct Node * )malloc(numsSize * sizeof(struct Node));
     int i = 0;
     int target = 0;
-    int ** ret = (int **) malloc(numsSize * sizeof(int));
+    int ** ret = (int **) malloc(numsSize * sizeof(int*));
     struct Node * pre = NULL ;
 
     ret = (int **) malloc(numsSize * 3 *sizeof(int));
