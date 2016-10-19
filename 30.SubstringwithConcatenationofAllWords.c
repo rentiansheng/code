@@ -2,6 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+//注意重复子串， 注意 子串与主串相等
+//注意子串重复数据
+
+
+
+
+
+
 void swap(int *a, int *b) {
     int tmp = *b;
     *b = *a;
@@ -29,6 +37,11 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
         return NULL;
     }
     wslen = strlen(words[0]);
+
+    if(wslen > slen) {
+        return NULL;
+    }
+    
 
     for(i = 0; i < wordsSize; i++) {
         //leetcode已第一个参数的长度为准 好坑
@@ -66,11 +79,17 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
             next = ptr + wslen;
 
             int index = 0;
-            if(*next == 0) {
+            if(mapCount == 0 ) {
+                ret[*returnSize] = ptr - s;
+                *returnSize += 1;
+                ptr ++;
+                continue;
+            }
+            if(*next == 0 ) {
                 break;
             }
             while(index < mapCount) {
-                if(strncmp(next, words[map[index]], wordsSize) == 0) {
+                if(strncmp(next, words[map[index]], wslen) == 0) {
                     mapCount--;
                     if(mapCount == 0) {
                         ret[*returnSize] = ptr - s;
@@ -88,7 +107,7 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
               
             }
             
-            ptr = ptr + wslen;
+            ptr ++;
 
         }
     }
@@ -100,12 +119,18 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
 
 
 int main(int argc, char *argv[]) {
-    char *s = "lingmindraboofooowingdingbarrwingmonkeypoundcake";
-    char *(sub[5]) = {"fooo","barr","wing","ding","wing"};
+    //char *s = "lingmindraboofooowingdingbarrwingmonkeypoundcake";
+    //char *(sub[5]) = {"fooo","barr","wing","ding","wing"};
+    //char *s = "a";
+    //char *(sub[5]) = {"a"};
+    //char *s = "aaaaaaaa";
+    //char *(sub[5]) = {"aa","aa","aa"};
+    char *s = "mississippi";
+    char *(sub[5]) = {"is","aa","aa"};
     int returnSize = 0;
     int i = 0;
 
-    int *map = findSubstring(s, sub, 4, &returnSize);
+    int *map = findSubstring(s, sub, 1, &returnSize);
 
     for(i = 0; i < returnSize; i++) {
         printf("%d ", map[i]);
