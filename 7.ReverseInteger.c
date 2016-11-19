@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <memory.h>
 
+//时间直接移位用需要求余、乘法、除法过于消耗cpu资源
+//我们可以对二进制移位，0001变成1000即可
 
 
 int reverse(int x) {

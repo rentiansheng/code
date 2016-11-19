@@ -38,7 +38,7 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
     }
     wslen = strlen(words[0]);
 
-    if(wslen > slen) {
+    if(wslen*wordsSize > slen) {
         return NULL;
     }
     
@@ -104,7 +104,7 @@ int* findSubstring(char* s, char** words, int wordsSize, int* returnSize) {
                     index++;
                 }
 
-              
+               
             }
             
             ptr ++;
