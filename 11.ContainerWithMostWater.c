@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <memory.h>
 
+
+//先假设开始和结束位置是最优的解。
+//然后，通过移动开始和结束的位置，来确定最优解
+
+
 unsigned int min(unsigned int c1, unsigned int c2) {
     return c1>c2?c2:c1;
 }
